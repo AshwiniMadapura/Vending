@@ -1,15 +1,30 @@
 public class PrintVendingMachine implements VendingMachine{
     private int selectedProduct;
+
     @Override
-    public void displayProduct() {
+    public void displayCategory(){
         System.out.println("***************************");
         System.out.println("Welcome to vending machine");
         System.out.println("***************************");
         System.out.println("Please select the category");
+
+        for (Product product:Product.values()){
+            if (product.getCategoryId()!=0) {
+                System.out.println("   " + product.getCategoryId() + "   " + product.name());
+            }
+        }
+    }
+    @Override
+    public void displayProduct() {
         System.out.println("--Products available are--");
 
         for (Product product:Product.values()){
-            System.out.println("   "+product.getId()+"   "+product.name()+"-   Price: "+product.getPrice()+"£");
+            if(product.getDrinkId()!=0 ) {
+//                System.out.println("selected category is"+s);
+//                if (selectCategory()==1) {
+                    System.out.println("   " + product.getDrinkId() + "   " + product.name() + "-   Price: " + product.getPrice() + "£");
+//                }
+                }
         }
 
         System.out.println("Please select your product");
